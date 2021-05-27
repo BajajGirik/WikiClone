@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +13,11 @@
 <body>
     <div id = "Left">
         <div id = "Left__logo">
-            <img src="" alt="">
-            <strong>WIKIPEDIA</strong>
+            <a href = "{% url 'Encyclopedia:index' %}">
+                <img src = "{% static 'Encyclopedia/Logo.png' %}" height = "100px" alt="Visit The Main Page">
+            </a><br>
+            <strong>WIKIPEDIA</strong><br>
+            The Free Encyclopedia
         </div>
     </div>
 </body>
