@@ -45,6 +45,7 @@ body {
 }
 
 #Main__navbar > form {
+  background-color: white;
   border: solid 1px rgb(133, 133, 133);
   border-radius: 5px;
   display: flex;
@@ -55,4 +56,9 @@ body {
   outline: none;
   border: none;
   margin-left: 5px;
+}
+
+#Main__navbar > form > button {
+  background-color: inherit;
+  border: none;
 }
