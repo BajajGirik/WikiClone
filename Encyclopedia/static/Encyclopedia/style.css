@@ -8,7 +8,7 @@ body {
   flex-basis: 0 1 0.2;
   padding: 10px;
   background-color: #f0f0f0;
-  border-right: solid 1px lightblue;
+  border-right: solid 1px skyblue;
   height: 100vh;
   display: flex;
   flex-direction: column;
