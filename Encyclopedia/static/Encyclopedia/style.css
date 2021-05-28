@@ -43,7 +43,7 @@ body {
 #Main__navbar {
   background-color: #f0f0f0;
   padding: 15px 15px 3px 15px;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1.5px solid transparent;
   border-image: linear-gradient(
     to right,
     #f0f0f0,
@@ -59,7 +59,6 @@ body {
 #Main__navbar > form {
   background-color: white;
   border: solid 1px rgb(133, 133, 133);
-  border-radius: 5px;
   display: flex;
   align-items: center;
 }
