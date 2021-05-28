@@ -39,6 +39,8 @@ body {
 }
 
 #Main__navbar {
+  background-color: #f0f0f0;
+  padding: 15px 15px 5px 15px;
   display: flex;
   justify-content: flex-end;
   flex-shrink: 1;
@@ -56,9 +58,17 @@ body {
   outline: none;
   border: none;
   margin-left: 5px;
+  line-height: 28px;
 }
 
 #Main__navbar > form > button {
   background-color: inherit;
+  padding-bottom: 0px;
   border: none;
+  cursor: pointer;
+}
+
+#Main__navbar > form > button > img {
+  height: 25px;
+  opacity: 0.5;
 }
