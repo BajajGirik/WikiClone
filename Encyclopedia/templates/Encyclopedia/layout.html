@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Encyclopedia/style.css' %}">
     <title>
         {% block title %} 
         {% endblock %} 
@@ -15,9 +16,17 @@
         <div id = "Left__logo">
             <a href = "{% url 'Encyclopedia:index' %}">
                 <img src = "{% static 'Encyclopedia/Logo.png' %}" height = "100px" alt="Visit The Main Page">
-            </a><br>
-            <strong>WIKIPEDIA</strong><br>
+            </a>
+            <strong>WIKIPEDIA</strong>
             The Free Encyclopedia
+        </div>
+        <div id = "Left__index1">
+            <ul>
+                <li><a href="">Main Page</a></li>
+                <li><a href="">Contents</a></li>
+                <li><a href="">Random article</a></li>
+                <li><a href="">Main Page</a></li>
+            </ul>
         </div>
     </div>
 </body>
