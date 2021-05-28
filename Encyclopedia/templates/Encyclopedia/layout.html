@@ -21,11 +21,11 @@
             The Free Encyclopedia
         </div>
         <div id = "Left__index1">
-            <ul>
-                <li><a href="">Main Page</a></li>
-                <li><a href="">Contents</a></li>
-                <li><a href="">Random article</a></li>
-                <li><a href="">Main Page</a></li>
+            <ul>   
+                <li><a href="{% url 'Encyclopedia:index' %}wiki/MainPage">Main page</a></li>
+                <li><a href="{% url 'Encyclopedia:index' %}contents">Contents</a></li>
+                <li><a href="{% url 'Encyclopedia:index' %}random">Random article</a></li>
+                <li><a href="{% url 'Encyclopedia:index' %}create">Create new page</a></li>
             </ul>
         </div>
     </div>
