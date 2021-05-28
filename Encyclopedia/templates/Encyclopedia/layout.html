@@ -32,11 +32,15 @@
 
     <div id = "Main">
         <div id = "Main__navbar">
-
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" name="q" placeholder="Search Wikipedia">
+                <img height = "25px" src="{% static 'Encyclopedia/search.png' %}" alt="">
+            </form>    
         </div>
 
         <div id = "Main__content">
-            
+          
         </div>
     </div>
 </body>
