@@ -4,13 +4,10 @@ from . import Fileoper
 
 # Create your views here.
 def index(request):
-    total = Fileoper.totalFiles()
     if request.method == 'POST':
         return HttpResponseRedirect(f"wiki/{request.POST.get('q')}")
-    return render(request, "Encyclopedia/index.html", {
-        "total": total
-    })
-
+    return HttpResponseRedirect(f"wiki/MAINPAGE")
+    
 def content(request):
     return HttpResponse("Content Page") 
 
@@ -20,5 +17,16 @@ def create(request):
 def random(request):    
     return HttpResponse("Random Page")
 
-def wiki(request, reqPage):    
-    return HttpResponse("Wiki Page")
+def wiki(request, reqPage): 
+    print(reqPage)  
+    filename = ''
+    for ch in reqPage:
+        if ch == ' ':
+            continue
+        filename += ch.capitalize()
+
+    f = Fileoper.getFile(filename)
+    if f:
+        return render(request, "Encyclopedia/index.html")    
+    else:
+       return HttpResponse("Fail")     
