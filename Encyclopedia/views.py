@@ -4,8 +4,6 @@ from . import Fileoper
 
 # Create your views here.
 def index(request):
-    if request.method == 'POST':
-        return HttpResponseRedirect(f"wiki/{request.POST.get('q')}")
     return HttpResponseRedirect(f"wiki/MAINPAGE")
     
 def content(request):
@@ -18,7 +16,6 @@ def random(request):
     return HttpResponse("Random Page")
 
 def wiki(request, reqPage): 
-    print(reqPage)  
     filename = ''
     for ch in reqPage:
         if ch == ' ':

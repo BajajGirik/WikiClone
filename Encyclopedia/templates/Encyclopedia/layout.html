@@ -22,19 +22,19 @@
         </div>
         <div id = "Left__index1">
             <ul>   
-                <li><a href="{% url 'Encyclopedia:index' %}wiki/MainPage">Main page</a></li>
-                <li><a href="{% url 'Encyclopedia:index' %}contents">Contents</a></li>
-                <li><a href="{% url 'Encyclopedia:index' %}random">Random article</a></li>
-                <li><a href="{% url 'Encyclopedia:index' %}create">Create new page</a></li>
+                <li><a href="{% url 'Encyclopedia:wiki' reqPage='MAINPAGE' %}">Main page</a></li>
+                <li><a href="{% url 'Encyclopedia:content' %}">Contents</a></li>
+                <li><a href="{% url 'Encyclopedia:random' %}">Random article</a></li>
+                <li><a href="{% url 'Encyclopedia:create' %}">Create new page</a></li>
             </ul>
         </div>
     </div>
 
     <div id = "Main">
         <div id = "Main__navbar">
-            <form action="{% url 'Encyclopedia:index' %}" method="post">
+            <form action="{% url 'Encyclopedia:index' %}" method="GET">
                 {% csrf_token %}
-                <input type="text" name="q" placeholder="Search Wikipedia">
+                <input type="search" name="q" placeholder="Search Wikipedia">
                 <button type="submit"><img src="{% static 'Encyclopedia/search.png' %}" alt=""></button>
             </form>    
         </div>
