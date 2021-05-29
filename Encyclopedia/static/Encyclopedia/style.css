@@ -137,3 +137,16 @@ body {
 #Main__content__fail > p {
   font-size: 25px;
 }
+
+#Main__content > center {
+  margin-top: 40px;
+  padding: 8px;
+  font-size: 30px;
+  background-color: #cedff2;
+}
+
+#Main__content__listcontainer {
+  flex-grow: 1;
+  background-color: #eef5fb;
+  padding-top: 10px;
+}
