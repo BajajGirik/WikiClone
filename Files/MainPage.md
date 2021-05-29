@@ -1,18 +1,23 @@
-# This is the Main Page of the Wikiclone
+## MAIN PAGE
 
-This website is a clone of Wikipedia.\
-In this website, you can create, edit and read some fun articles.\
+This is the main page of this website.
 
-# Info about the creater of the page:
+This website is a clone of Wikipedia.
 
-### NAME: Girik Bajaj
+In this website, you can create, edit and read some fun articles.
 
-### STUDIES AT: USICT, Dwarka
+You can write/edit using [Github's Markdown language](https://www.markdownguide.org/basic-syntax/ "Basics Of Markdown").
 
-### COURSE: B.Tech CSE
+## Info about the creater of the page:
 
-### BATCH: 2019-23
+#### NAME: Girik Bajaj
 
-### GITHUB: https://github.com/BajajGirik
+#### STUDIES AT: USICT, Dwarka
 
-### LINKEDIN: www.linkedin.com/in/girik-bajaj-5a5389193
+#### COURSE: B.Tech CSE
+
+#### BATCH: 2019-23
+
+#### GITHUB: <https://github.com/BajajGirik>
+
+#### LINKEDIN: <https://www.linkedin.com/in/girik-bajaj-5a5389193/>

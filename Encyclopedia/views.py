@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from . import Fileoper
+import markdown
 
 # Create your views here.
 def index(request):
@@ -29,8 +30,9 @@ def wiki(request, reqPage):
     f = Fileoper.getFile(filename) 
 
     if f:
+        html = markdown.markdown(f)
         return render(request, "Encyclopedia/index.html", {
-        "content": f
+        "content": html
     })
 
     else:
