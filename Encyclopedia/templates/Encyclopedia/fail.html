@@ -1,0 +1,10 @@
+{% extends "Encyclopedia/layout.html" %}
+
+{% block title %} {{title}}-NotFound {% endblock %}
+
+{% block Main__content %}
+<div id = "Main__content__fail">
+    <h1>Couldn't find "{{title}}"</h1>
+    <p>Try going to <a href="{% url 'Encyclopedia:content' %}">Contents Page</a> and look for it</p> 
+</div>
+{% endblock %}
