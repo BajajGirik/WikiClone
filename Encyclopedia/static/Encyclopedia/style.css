@@ -97,3 +97,25 @@ body {
   background-color: #f0f0f0;
   text-align: center;
 }
+
+#Main__content__article {
+  margin: 15px 0px;
+  padding: 0px 8px;
+  background-color: rgb(240, 208, 167);
+}
+
+#Main__content__article > p {
+  margin: 3px;
+}
+
+#Main__content__article > h1,
+#Main__content__article > h2,
+#Main__content__article > h3 {
+  margin: 14px 0px;
+}
+
+#Main__content__article > h4,
+#Main__content__article > h5,
+#Main__content__article > h6 {
+  margin: 10px 0px;
+}
