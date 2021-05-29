@@ -90,6 +90,7 @@ body {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 #Main__content__header {
@@ -118,4 +119,21 @@ body {
 #Main__content__article > h5,
 #Main__content__article > h6 {
   margin: 10px 0px;
+}
+
+#Main__content__fail {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+#Main__content__fail > h1 {
+  color: red;
+  font-size: 50px;
+}
+
+#Main__content__fail > p {
+  font-size: 25px;
 }

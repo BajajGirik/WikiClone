@@ -32,8 +32,11 @@ def wiki(request, reqPage):
     if f:
         html = markdown.markdown(f)
         return render(request, "Encyclopedia/index.html", {
-        "content": html
-    })
+            "title": filename,
+            "content": html
+        })
 
     else:
-        return HttpResponse("Fail")
+        return render(request, "Encyclopedia/fail.html", {
+            "title": reqPage
+        })
