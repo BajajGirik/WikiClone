@@ -39,6 +39,13 @@
         </div>
 
         <div id = "Main__content">
+            <div id = "Main__content__header">
+                <p>Welcome to <a href="">Wikipedia Clone</a></p>
+                <br>
+                The free encyclopedia that you can edit.
+                <br><br>
+                Total Articles present: {% block total %} {% endblock %}
+            </div>
           {% block Main__content %}
           {% endblock %}
         </div>
