@@ -10,7 +10,7 @@ def index(request):
     
 def content(request):
     return render(request, "Encyclopedia/content.html", {
-        "Files": Fileoper.totalFiles()
+        "files": Fileoper.totalFiles()
     })
 
 def create(request):    
