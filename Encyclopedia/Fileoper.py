@@ -18,4 +18,4 @@ def getFile(title):
 
 def totalFiles():
     direc, filenames = default_storage.listdir("Files")
-    return len(filenames)            
+    return filenames            

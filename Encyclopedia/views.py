@@ -9,7 +9,9 @@ def index(request):
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=["MAINPAGE"]))
     
 def content(request):
-    return HttpResponse("Content Page") 
+    return render(request, "Encyclopedia/content.html", {
+        "Files": Fileoper.totalFiles()
+    })
 
 def create(request):    
     return HttpResponse("Create Page")
@@ -19,7 +21,7 @@ def random(request):
 
 def search(request):    
     req = request.GET["q"]
-    return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [req]))
+    return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [req.upper()]))
 
 def wiki(request, reqPage):
     filename = ''
