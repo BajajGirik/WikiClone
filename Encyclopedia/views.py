@@ -6,6 +6,15 @@ import markdown
 
 # Create your views here.
 def index(request):
+    if request.method == 'POST':
+        title = request.POST["title"]
+        article = request.POST["article"]
+        msg = Fileoper.createFile(title,article)
+        
+        return HttpResponseRedirect(reverse("Encyclopedia:create"), {
+            "msg" : msg
+        })
+
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=["MAINPAGE"]))
     
 def content(request):

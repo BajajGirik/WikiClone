@@ -9,9 +9,9 @@ def createFile(title, content):
     path = f"Files/{title}.md"
 
     if default_storage.exists(path):
-        default_storage.delete(path)
-
+        return False
     default_storage.save(path, ContentFile(content))  
+    return True
      
 def getFile(title):
     path = f"Files/{title}.md"

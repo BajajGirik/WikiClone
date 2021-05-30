@@ -1,5 +1,5 @@
 {% extends "Encyclopedia/layout.html" %}
-
+{% load static %}
 {% block title %} Create - WikiClone {% endblock %}
 
 {% block Main__content %}
@@ -11,18 +11,5 @@
         <textarea name="article"  placeholder="Write it in Markdown..." required></textarea>
         <button type="submit">Submit</button>
     </form>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        checkEnter = (e) => {
-            if(e.keyCode == 13)
-            {
-                e.preventDefault();
-            }
-        }    
-
-        var x = document.querySelector("#Main__content__create__input");
-        x.onkeypress = checkEnter;
-    });
-</script>
+    <script src="{% static 'Encyclopedia/index.js'%}"></script>
 {% endblock %}
