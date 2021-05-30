@@ -6,9 +6,9 @@
     <form action="/" method="POST" id = "Main__content__create">
         {% csrf_token %}
         <p>Title:</p>
-        <input id = "Main__content__create__input" type="text" name="title" placeholder="Title">
+        <input id = "Main__content__create__input" type="text" name="title" placeholder="Title" required>
         <p>Article:</p>
-        <textarea name="article"  placeholder="Write it in Markdown..."></textarea>
+        <textarea name="article"  placeholder="Write it in Markdown..." required></textarea>
         <button type="submit">Submit</button>
     </form>
 
