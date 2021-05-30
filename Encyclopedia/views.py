@@ -15,7 +15,7 @@ def content(request):
     })
 
 def create(request):    
-    return HttpResponse("Create Page")
+    return render(request, "Encyclopedia/create.html")
 
 def random(request):    
     return HttpResponse("Random Page")

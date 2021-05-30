@@ -1,0 +1,17 @@
+{% extends "Encyclopedia/layout.html" %}
+
+{% block title %} Create - WikiClone {% endblock %}
+
+{% block Main__content %}
+<div id = "Main__content__create">
+    <form action="/" method="POST">
+        {% csrf_token %}
+        <p>Title:</p>
+        <input type="text" name="title">
+        <p>Article: (Must be written in Markdown language)</p>
+        <textarea name="article" cols="30" rows="10">Type your article here...</textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
