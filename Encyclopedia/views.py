@@ -21,20 +21,25 @@ def random(request):
 
 def search(request):    
     req = request.GET["q"]
-    return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [req.upper()]))
-
-def wiki(request, reqPage):
+    requp = req.upper()
     filename = ''
-    for ch in reqPage:
+    for ch in requp:
         if ch == ' ':
             continue
-        filename += ch.capitalize()
-    f = Fileoper.getFile(filename) 
+        filename += ch
+    
+    if Fileoper.getFile(filename):
+        return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [filename]))
+    else:
+        return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [req]))
 
+
+def wiki(request, reqPage):
+    f = Fileoper.getFile(reqPage) 
     if f:
         html = markdown.markdown(f)
         return render(request, "Encyclopedia/index.html", {
-            "title": filename,
+            "title": reqPage,
             "content": html
         })
 
