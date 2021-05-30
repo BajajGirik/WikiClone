@@ -150,3 +150,23 @@ body {
   background-color: #eef5fb;
   padding-top: 10px;
 }
+#Main__content__create {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+#Main__content__create > form > p {
+  margin: 8px 0px;
+  font-size: 20px;
+}
+
+#Main__content__create__input,
+textarea {
+  outline: none;
+  border: solid 1px rgb(133, 133, 133);
+  border-radius: 5px;
+  font-size: 20px;
+  width: 100%;
+}

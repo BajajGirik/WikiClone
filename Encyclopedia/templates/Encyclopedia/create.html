@@ -7,11 +7,24 @@
     <form action="/" method="POST">
         {% csrf_token %}
         <p>Title:</p>
-        <input type="text" name="title">
+        <input id = "Main__content__create__input" type="text" name="title" placeholder="Title">
         <p>Article: (Must be written in Markdown language)</p>
-        <textarea name="article" cols="30" rows="10">Type your article here...</textarea>
+        <textarea name="article"  placeholder="Type your article here..."></textarea>
         <button type="submit">Submit</button>
     </form>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        checkEnter = (e) => {
+            if(e.keyCode == 13)
+            {
+                e.preventDefault();
+            }
+        }    
+
+        var x = document.querySelector("#Main__content__create__input");
+        x.onkeypress = checkEnter;
+    });
+</script>
 {% endblock %}
