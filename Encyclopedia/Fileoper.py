@@ -22,5 +22,5 @@ def getFile(title):
 
 def totalFiles():
     direc, filenames = default_storage.listdir("Files")
-    impfilenames = map(improveFilename,filenames)
+    impfilenames = sorted(map(improveFilename,filenames))
     return impfilenames            

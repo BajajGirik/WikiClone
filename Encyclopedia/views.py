@@ -9,6 +9,7 @@ def index(request):
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=["MAINPAGE"]))
     
 def content(request):
+    print(Fileoper.totalFiles())
     return render(request, "Encyclopedia/content.html", {
         "files": Fileoper.totalFiles()
     })
