@@ -1,6 +1,10 @@
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
+def improveFilename(name):
+    name = name[0:-3]
+    return name
+
 def createFile(title, content):
     path = f"Files/{title}.md"
 
@@ -18,4 +22,5 @@ def getFile(title):
 
 def totalFiles():
     direc, filenames = default_storage.listdir("Files")
-    return filenames            
+    impfilenames = map(improveFilename,filenames)
+    return impfilenames            
