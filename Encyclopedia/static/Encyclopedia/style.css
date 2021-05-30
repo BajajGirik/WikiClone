@@ -154,19 +154,25 @@ body {
   padding: 10px 0px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex-grow: 1;
 }
 
-#Main__content__create > form > p {
+#Main__content__create > p {
   margin: 8px 0px;
   font-size: 20px;
 }
 
 #Main__content__create__input,
-textarea {
+#Main__content__create > textarea {
   outline: none;
   border: solid 1px rgb(133, 133, 133);
   border-radius: 5px;
   font-size: 20px;
-  width: 100%;
+  width: 95%;
+  margin-bottom: 14px;
+}
+
+#Main__content__create > textarea {
+  flex-grow: 1;
 }
