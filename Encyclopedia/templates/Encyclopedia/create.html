@@ -4,7 +4,7 @@
 
 {% block Main__content %}
     {% if msg %}
-        <div id="{{tag}} Message">{{msg}}<button id = "Message__remove">X</button></div>
+        <div class="{{tag}} Message">{{msg}}<button id = "Message__remove">X</button></div>
     {% endif %}
     <form action="/" method="POST" id = "Main__content__create">
         {% csrf_token %}
