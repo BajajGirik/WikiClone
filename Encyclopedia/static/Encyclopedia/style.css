@@ -121,8 +121,13 @@ body {
 
 #Main__content__article {
   margin: 15px 0px;
-  padding: 0px 8px;
+  padding: 0px 8px 8px 8px;
   background-color: rgb(240, 208, 167);
+}
+#Main__content__article__Edit {
+  margin: 16px;
+  float: right;
+  text-decoration: none;
 }
 
 #Main__content__article > p {

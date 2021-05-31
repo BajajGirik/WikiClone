@@ -68,3 +68,6 @@ def wiki(request, reqPage):
         return render(request, "Encyclopedia/fail.html", {
             "title": reqPage
         })
+
+def edit(request, reqPage):
+    return HttpResponse(f"Edit {reqPage}")

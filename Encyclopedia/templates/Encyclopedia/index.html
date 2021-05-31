@@ -4,6 +4,7 @@
 
 {% block Main__content %}
 <div id = "Main__content__article">
+    <a href="{% url 'Encyclopedia:edit' reqPage=title %}" id = "Main__content__article__Edit">[ edit ]</a>
     {{content|safe}}
 </div>
 {% endblock %}
