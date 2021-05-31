@@ -20,4 +20,4 @@ You can write/edit using [Github's Markdown language](https://www.markdownguide.
 
 #### GITHUB: <https://github.com/BajajGirik>
 
-#### LINKEDIN: <https://www.linkedin.com/in/girik-bajaj-5a5389193/>
+#### LINKEDIN: <https://www.linkedin.com/in/girik-bajaj/>
