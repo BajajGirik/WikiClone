@@ -31,6 +31,11 @@
     </div>
 
     <div id = "Main">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="{{ message.tags }} Message">{{message}}<button id = "Message__remove">X</button></div>
+        {% endfor %}    
+        {% endif %}
         <div id = "Main__navbar">
             <form action="{% url 'Encyclopedia:search' %}" method="GET">
                 <input type="search" name="q" placeholder="Search Wikipedia">
