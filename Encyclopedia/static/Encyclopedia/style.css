@@ -222,7 +222,8 @@ body {
   display: flex;
   justify-content: space-between;
   animation-name: remove;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 }
 

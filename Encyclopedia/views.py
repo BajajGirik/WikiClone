@@ -10,7 +10,13 @@ def index(request):
     if request.method == 'POST':
         title = request.POST["title"]
         article = request.POST["article"]
-        msg = Fileoper.createFile(title,article)
+        finalTitle = ''
+        for ch in title:
+            if ch == ' ':
+                continue
+            finalTitle += ch.capitalize()
+
+        msg = Fileoper.createFile(finalTitle,article)
         print(msg)
         if msg:
             messages.success(request, "Article is saved")
