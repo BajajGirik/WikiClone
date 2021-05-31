@@ -10,9 +10,17 @@ def index(request):
         title = request.POST["title"]
         article = request.POST["article"]
         msg = Fileoper.createFile(title,article)
+        print(msg)
+        if msg:
+            out = "File save successfull..."
+            tag = "success"
+        else:
+            out = "Page with this title already exists..."  
+            tag = "fail"  
         
-        return HttpResponseRedirect(reverse("Encyclopedia:create"), {
-            "msg" : msg
+        return render(request, "Encyclopedia/create.html", {
+            "msg": out,
+            "tag": tag
         })
 
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=["MAINPAGE"]))
