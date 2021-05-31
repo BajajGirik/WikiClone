@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
 from . import Fileoper
 import markdown
 
@@ -12,16 +13,12 @@ def index(request):
         msg = Fileoper.createFile(title,article)
         print(msg)
         if msg:
-            out = "File save successfull..."
-            tag = "success"
+            messages.success(request, "Article is saved")
         else:
-            out = "Page with this title already exists..."  
-            tag = "fail"  
+            messages.error(request, "Article title already present")
+              
         
-        return render(request, "Encyclopedia/create.html", {
-            "msg": out,
-            "tag": tag
-        })
+        return render(request, "Encyclopedia/create.html")
 
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=["MAINPAGE"]))
     

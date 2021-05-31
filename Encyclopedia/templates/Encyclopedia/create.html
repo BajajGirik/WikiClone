@@ -3,8 +3,10 @@
 {% block title %} Create - WikiClone {% endblock %}
 
 {% block Main__content %}
-    {% if msg %}
-        <div class="{{tag}} Message">{{msg}}<button id = "Message__remove">X</button></div>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="{{ message.tags }} Message">{{message}}<button id = "Message__remove">X</button></div>
+    {% endfor %}    
     {% endif %}
     <form action="/" method="POST" id = "Main__content__create">
         {% csrf_token %}
