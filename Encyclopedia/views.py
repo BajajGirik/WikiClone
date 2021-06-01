@@ -17,7 +17,7 @@ def index(request):
         for ch in title:
             if ch == ' ':
                 continue
-            finalTitle += ch.capitalize()
+            finalTitle += ch.upper()
         if filenameloc.objects.get(tisearch=finalTitle):
             messages.error(request, "Article title already present")
 
@@ -46,22 +46,21 @@ def random(request):
 
 def search(request):    
     req = request.GET["q"]
-    requp = req.upper()
     filename = ''
-    for ch in requp:
+    for ch in req:
         if ch == ' ':
             continue
-        filename += ch
+        filename += ch.upper()
     
-    if Fileoper.getFile(filename):
+    if filenameloc.get(tisearch=filename):
         return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [filename]))
     else:
         return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [req]))
 
 
 def wiki(request, reqPage):
-    f = Fileoper.getFile(reqPage) 
-    if f:
+    if filenameloc.get(tisearch=reqPage):
+        f = default_storage.open(f"Files/{reqPage}.md").read().decode("utf-8")
         html = markdown.markdown(f)
         return render(request, "Encyclopedia/index.html", {
             "title": reqPage,
@@ -77,10 +76,14 @@ def edit(request, reqPage):
     if request.method == 'POST':
         title = request.POST["title"]
         article = request.POST["article"]
-        Fileoper.saveFile(title, article)
+        tisearch = filenameloc.get(title=title).tisearch
+        
+        default_storage.delete(f"Files/{tisearch}.md")
+        default_storage.save(f"Files/{tisearch}.md",article)
+
         messages.success(request, "File updated successfully...")
 
-    f = Fileoper.getFile(reqPage) 
+    f = default_storage.open(f"Files/{reqPage}.md").read().decode("utf-8")
     if f:
         return render(request, "Encyclopedia/edit.html", {
             "title": reqPage,
