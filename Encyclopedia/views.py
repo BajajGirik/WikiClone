@@ -50,9 +50,9 @@ def create(request):
     })
 
 def randomPage(request):
-    id = random.randint(1, TotalFiles.objects.first().total)
-    print(id)
-    filename = filenameloc.objects.get(id=id).tisearch
+    # id = random.randint(1, TotalFiles.objects.first().total)
+    filename = random.choice(filenameloc.objects.all())
+    filename = filename.tisearch
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=[filename]))
 
 def search(request):    
