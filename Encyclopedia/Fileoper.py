@@ -1,5 +1,6 @@
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+import random
 
 def improveFilename(name):
     name = name[0:-3]
@@ -31,3 +32,7 @@ def totalFiles():
     direc, filenames = default_storage.listdir("Files")
     impfilenames = sorted(map(improveFilename,filenames))
     return impfilenames            
+
+def randomFile():
+    filenames = totalFiles()
+    return random.choice(filenames)

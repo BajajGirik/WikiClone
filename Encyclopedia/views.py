@@ -38,7 +38,8 @@ def create(request):
     return render(request, "Encyclopedia/create.html")
 
 def random(request):    
-    return HttpResponse("Random Page")
+    filename = Fileoper.randomFile()
+    return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=[filename]))
 
 def search(request):    
     req = request.GET["q"]
