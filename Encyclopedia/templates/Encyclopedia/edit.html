@@ -1,12 +1,12 @@
 {% extends "Encyclopedia/layout.html" %}
 {% load static %}
-{% block title %} Edit {{title}} - WikiClone {% endblock %}
+{% block title %} Edit {{title.title}} - WikiClone {% endblock %}
 
 {% block Main__content %}
-    <form action="{% url 'Encyclopedia:edit' reqPage=title %}" method="POST" id = "Main__content__create">
+    <form action="{% url 'Encyclopedia:edit' reqPage=title.tisearch %}" method="POST" id = "Main__content__create">
         {% csrf_token %}
         <p>Title:</p>
-        <input id = "Main__content__create__input" type="text" name="title" placeholder="Title" value = "{{title}}" readonly>
+        <input id = "Main__content__create__input" type="text" name="title" placeholder="Title" value = "{{title.title}}" readonly>
         <p>Article:</p>
         <textarea name="article"  placeholder="Write it in Markdown..." required>{{content}}</textarea>
         <button type="submit">Submit</button>
