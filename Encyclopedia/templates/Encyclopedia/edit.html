@@ -1,0 +1,15 @@
+{% extends "Encyclopedia/layout.html" %}
+{% load static %}
+{% block title %} Edit {{title}} - WikiClone {% endblock %}
+
+{% block Main__content %}
+    <form action="/" method="POST" id = "Main__content__create">
+        {% csrf_token %}
+        <p>Title:</p>
+        <input id = "Main__content__create__input" type="text" name="title" placeholder="Title" value = "{{title}}" readonly>
+        <p>Article:</p>
+        <textarea name="article"  placeholder="Write it in Markdown..." required>{{content}}</textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="{% static 'Encyclopedia/index.js'%}"></script>
+{% endblock %}
