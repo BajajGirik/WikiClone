@@ -4,6 +4,7 @@ from django.core.files.storage import default_storage
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
+import random
 from . import Fileoper
 import markdown
 from .models import filenameloc, TotalFiles
@@ -40,7 +41,7 @@ def index(request):
 def content(request):
     return render(request, "Encyclopedia/content.html", {
         "TAP": TotalFiles.objects.first(),
-        "files": filenameloc.objects.all()
+        "files": filenameloc.objects.all().order_by("title")
     })
 
 def create(request):    
@@ -48,8 +49,10 @@ def create(request):
         "TAP": TotalFiles.objects.first()
     })
 
-def random(request):    
-    filename = Fileoper.randomFile()
+def randomPage(request):
+    id = random.randint(1, TotalFiles.objects.first().total)
+    print(id)
+    filename = filenameloc.objects.get(id=id).tisearch
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=[filename]))
 
 def search(request):    
