@@ -25,7 +25,9 @@ def index(request):
         except:
             var = filenameloc(title=title, tisearch=finalTitle)
             var.save()
-            TotalFiles.objects.first().total += 1
+            fir = TotalFiles.objects.first()
+            fir.total += 1
+            fir.save()
             default_storage.save(f"Files/{finalTitle}.md", ContentFile(article))  
             messages.success(request, "Article is saved")
                  
