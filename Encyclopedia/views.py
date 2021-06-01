@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 from . import Fileoper
 import markdown
+from .models import filenameloc, TotalFiles
 
 # Create your views here.
 def index(request):
@@ -15,15 +18,16 @@ def index(request):
             if ch == ' ':
                 continue
             finalTitle += ch.capitalize()
-
-        msg = Fileoper.createFile(finalTitle,article)
-        print(msg)
-        if msg:
-            messages.success(request, "Article is saved")
-        else:
+        if filenameloc.objects.get(tisearch=finalTitle):
             messages.error(request, "Article title already present")
-              
-        
+
+        else:
+            var = filenameloc(title=title, tisearch=finalTitle)
+            var.save()
+            #increment number
+            default_storage.save(f"Files/{finalTitle}.md", ContentFile(article))  
+            messages.success(request, "Article is saved")
+                 
         return render(request, "Encyclopedia/create.html")
 
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=["MAINPAGE"]))
