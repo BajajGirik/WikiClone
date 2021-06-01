@@ -5,7 +5,6 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 import random
-from . import Fileoper
 import markdown
 from .models import filenameloc, TotalFiles
 
