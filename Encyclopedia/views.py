@@ -18,27 +18,33 @@ def index(request):
             if ch == ' ':
                 continue
             finalTitle += ch.upper()
-        if filenameloc.objects.get(tisearch=finalTitle):
+        try:
+            temp = filenameloc.objects.get(tisearch=finalTitle)
             messages.error(request, "Article title already present")
 
-        else:
+        except:
             var = filenameloc(title=title, tisearch=finalTitle)
             var.save()
-            #increment number
+            TotalFiles.objects.first().total += 1
             default_storage.save(f"Files/{finalTitle}.md", ContentFile(article))  
             messages.success(request, "Article is saved")
                  
-        return render(request, "Encyclopedia/create.html")
+        return render(request, "Encyclopedia/create.html", {
+            "TAP": TotalFiles.objects.first()
+        })
 
     return HttpResponseRedirect(reverse("Encyclopedia:wiki", args=["MAINPAGE"]))
     
 def content(request):
     return render(request, "Encyclopedia/content.html", {
+        "TAP": TotalFiles.objects.first(),
         "files": filenameloc.objects.all()
     })
 
 def create(request):    
-    return render(request, "Encyclopedia/create.html")
+    return render(request, "Encyclopedia/create.html",{
+        "TAP": TotalFiles.objects.first()
+    })
 
 def random(request):    
     filename = Fileoper.randomFile()
@@ -52,23 +58,27 @@ def search(request):
             continue
         filename += ch.upper()
     
-    if filenameloc.objects.get(tisearch=filename):
+    try:
+        temp = filenameloc.objects.get(tisearch=filename)
         return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [filename]))
-    else:
+    except:
         return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [req]))
 
 
 def wiki(request, reqPage):
-    if filenameloc.objects.get(tisearch=reqPage):
+    try:
+        temp = filenameloc.objects.get(tisearch=reqPage)
         f = default_storage.open(f"Files/{reqPage}.md").read().decode("utf-8")
         html = markdown.markdown(f)
         return render(request, "Encyclopedia/index.html", {
+            "TAP": TotalFiles.objects.first(),
             "title": reqPage,
             "content": html
         })
 
-    else:
+    except:
         return render(request, "Encyclopedia/fail.html", {
+            "TAP": TotalFiles.objects.first(),
             "title": reqPage
         })
 
@@ -79,18 +89,20 @@ def edit(request, reqPage):
         tisearch = filenameloc.objects.get(title=title).tisearch
         
         default_storage.delete(f"Files/{tisearch}.md")
-        default_storage.save(f"Files/{tisearch}.md",article)
+        default_storage.save(f"Files/{tisearch}.md",ContentFile(article))
 
         messages.success(request, "File updated successfully...")
 
     f = default_storage.open(f"Files/{reqPage}.md").read().decode("utf-8")
     if f:
         return render(request, "Encyclopedia/edit.html", {
-            "title": reqPage,
+            "TAP": TotalFiles.objects.first(),
+            "title": filenameloc.objects.get(tisearch=reqPage),
             "content": f
         })
 
     else:
         return render(request, "Encyclopedia/fail.html", {
+            "TAP": TotalFiles.objects.first(),
             "title": reqPage
         })

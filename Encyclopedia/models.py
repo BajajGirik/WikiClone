@@ -12,4 +12,4 @@ class TotalFiles(models.Model):
     total = models.IntegerField()
 
     def __str__(self):
-        return f"Total number of files: {self.total}"      
+        return f"Total Articles Present: {self.total}"      
