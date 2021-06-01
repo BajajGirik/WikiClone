@@ -52,14 +52,14 @@ def search(request):
             continue
         filename += ch.upper()
     
-    if filenameloc.get(tisearch=filename):
+    if filenameloc.objects.get(tisearch=filename):
         return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [filename]))
     else:
         return HttpResponseRedirect(reverse("Encyclopedia:wiki", args = [req]))
 
 
 def wiki(request, reqPage):
-    if filenameloc.get(tisearch=reqPage):
+    if filenameloc.objects.get(tisearch=reqPage):
         f = default_storage.open(f"Files/{reqPage}.md").read().decode("utf-8")
         html = markdown.markdown(f)
         return render(request, "Encyclopedia/index.html", {
@@ -76,7 +76,7 @@ def edit(request, reqPage):
     if request.method == 'POST':
         title = request.POST["title"]
         article = request.POST["article"]
-        tisearch = filenameloc.get(title=title).tisearch
+        tisearch = filenameloc.objects.get(title=title).tisearch
         
         default_storage.delete(f"Files/{tisearch}.md")
         default_storage.save(f"Files/{tisearch}.md",article)
