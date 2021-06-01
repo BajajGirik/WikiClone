@@ -70,4 +70,14 @@ def wiki(request, reqPage):
         })
 
 def edit(request, reqPage):
-    return HttpResponse(f"Edit {reqPage}")
+    f = Fileoper.getFile(reqPage) 
+    if f:
+        return render(request, "Encyclopedia/edit.html", {
+            "title": reqPage,
+            "content": f
+        })
+
+    else:
+        return render(request, "Encyclopedia/fail.html", {
+            "title": reqPage
+        })
