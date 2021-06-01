@@ -3,7 +3,7 @@
 {% block title %} Edit {{title}} - WikiClone {% endblock %}
 
 {% block Main__content %}
-    <form action="/" method="POST" id = "Main__content__create">
+    <form action="{% url 'Encyclopedia:edit' %}" method="POST" id = "Main__content__create">
         {% csrf_token %}
         <p>Title:</p>
         <input id = "Main__content__create__input" type="text" name="title" placeholder="Title" value = "{{title}}" readonly>

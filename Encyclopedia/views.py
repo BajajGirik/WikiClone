@@ -70,6 +70,11 @@ def wiki(request, reqPage):
         })
 
 def edit(request, reqPage):
+    if request.method == 'POST':
+        title = request.POST["title"]
+        article = request.POST["article"]
+        Fileoper.saveFile(title, article)
+
     f = Fileoper.getFile(reqPage) 
     if f:
         return render(request, "Encyclopedia/edit.html", {
