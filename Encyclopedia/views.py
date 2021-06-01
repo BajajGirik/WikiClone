@@ -74,6 +74,7 @@ def edit(request, reqPage):
         title = request.POST["title"]
         article = request.POST["article"]
         Fileoper.saveFile(title, article)
+        messages.success(request, "File updated successfully...")
 
     f = Fileoper.getFile(reqPage) 
     if f:

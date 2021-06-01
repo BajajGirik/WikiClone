@@ -8,7 +8,7 @@ In this website, you can create, edit and read some fun articles.
 
 You can write/edit using [Github's Markdown language](https://www.markdownguide.org/basic-syntax/ "Basics Of Markdown").
 
-## Info about the creater of the page:
+## Info about the creator of the page:
 
 #### NAME: Girik Bajaj
 
